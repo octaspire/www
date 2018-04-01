@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="https://octaspire.io/feed.xml"
+            rel="self"
+            type="application/rss+xml"/>
+        <title>octaspire.io</title>
+        <link>https://octaspire.io</link>
+        <description>Games and utilities by Octaspire</description>
+        <language>en-us</language>
+        <image>
+            <title>octaspire.io</title>
+            <link>https://octaspire.io</link>
+            <url>https://octaspire.io/octaspireO128.png</url>
+            <width>128</width>
+            <height>128</height>
+        </image>
+
+        <item>
+            <title>New minimal style, directory layout changed</title>
+            <link>http://octaspire.com</link>
+            <description>
+              Site and documentation has now new minimal style. The directory
+              layout has also changed, so old links will not work.
+            </description>
+            <pubDate>Sun, 01 Apr 2018 21:09:50 +0300</pubDate>
+        </item>
+
+    </channel>
+</rss>

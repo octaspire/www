@@ -1,0 +1,10 @@
+[submodule "external/dotfiles"]
+[submodule "external/octaspire_dotfiles"]
+	path = external/octaspire_dotfiles
+	url = https://github.com/octaspire/dotfiles.git
+[submodule "external/octaspire_dern"]
+	path = external/octaspire_dern
+	url = https://github.com/octaspire/dern.git
+[submodule "external/octaspire_core"]
+	path = external/octaspire_core
+	url = https://github.com/octaspire/core.git

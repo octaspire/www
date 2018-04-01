@@ -1,0 +1,27 @@
+#+TITLE: OCTASPIRE
+#+AUTHOR: www.octaspire.com
+#+SETUPFILE: org-minimal-theme.setup
+
+#+BEGIN_EXPORT html
+<center class='small'>
+#+END_EXPORT
+[[https://octaspire.io][octaspire.io]] | [[http://octaspire.com][octaspire.com]] | [[https://pgp.mit.edu/pks/lookup?op=get&search=0x9BD2CCD560E9E29C][public key]] | [[file:feed.xml][feed]] | [[https://github.com/octaspire][github]] | [[https://gitlab.com/octaspire][gitlab]]
+#+BEGIN_EXPORT html
+</center>
+#+END_EXPORT
+
+** CORE
+
+   [[file:core.tar.bz2][release]] | [[file:core.tar.bz2.sig][signature]]| [[file:core.tar.bz2.sha512][checksum]]
+
+   A platform independent container, UTF-8 and utility library in standard C99.
+
+** DERN
+
+   [[file:dern-manual.html][manual]] | [[file:dern.tar.bz2][release]] | [[file:dern.tar.bz2.sig][signature]]| [[file:dern.tar.bz2.sha512][checksum]]
+
+   A platform independent programming language in standard C99.
+   It is a dialect of Lisp with influences from Scheme, Emacs Lisp and C.
+   It runs in Amiga, Plan9, Unix, Windows and almost anything between.
+
+
