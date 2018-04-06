@@ -25,7 +25,7 @@ git-update:
 www: git-update payload index.org
 	touch feed.xml
 	cp external/octaspire_dern/release/documentation/dern-manual.html .
-	$(EMACS) --load external/octaspire_dern/external/octaspire_dotfiles/emacs/.emacs.d/init.el $(FLAGS) index.org --funcall org-html-export-to-html --kill
+	$(EMACS) --load external/octaspire_dern/external/octaspire_dotfiles/emacs/.emacs.d/init.el $(FLAGS) index.org --funcall org-reload --funcall org-html-export-to-html --kill
 
 publish: www
 	scp dern-windeps.zip external/bundle.min.css external/bundle.min.js index.html dern-manual.html dern.tar.bz2 dern.tar.bz2.sig dern.tar.bz2.sha512 core.tar.bz2 core.tar.bz2.sig core.tar.bz2.sha512 octaspire-pubkey.asc octaspireO128.png $(OCTASPIRE_IO_SCP_TARGET)
