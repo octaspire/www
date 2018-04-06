@@ -2,13 +2,7 @@
 #+AUTHOR: www.octaspire.com
 #+SETUPFILE: org-minimal-theme.setup
 
-#+BEGIN_EXPORT html
-<center class='small'>
-#+END_EXPORT
 [[https://octaspire.io][octaspire.io]] | [[http://octaspire.com][octaspire.com]] | [[https://pgp.mit.edu/pks/lookup?op=get&search=0x9BD2CCD560E9E29C][public key]] | [[file:feed.xml][feed]] | [[https://github.com/octaspire][github]] | [[https://gitlab.com/octaspire][gitlab]]
-#+BEGIN_EXPORT html
-</center>
-#+END_EXPORT
 
 ** CORE
 
