@@ -26,5 +26,15 @@
             <pubDate>Sun, 01 Apr 2018 21:09:50 +0300</pubDate>
         </item>
 
+        <item>
+            <title>Type and function name changes in Octaspire Core</title>
+            <link>http://octaspire.com</link>
+            <description>
+              Some types and functions are renamed in Octaspire Core
+              library. This change breaks old code.
+            </description>
+            <pubDate>Mon, 23 Apr 2018 16:19:43 +0300</pubDate>
+        </item>
+
     </channel>
 </rss>
