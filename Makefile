@@ -1,5 +1,11 @@
 EMACS=emacs
-FLAGS=--batch
+# In batch mode Emacs doesn't load the usual initialization file. To get the correct
+# settings and styles in the batch mode, the initialization file must be loaded manually.
+# However, there are still some small problems with the Org export when running in batch
+# mode using the default version of Org mode, so the export is run without batch mode at
+# the moment.
+#EMACSFLAGS=--load dev/external/octaspire_dotfiles/emacs/.emacs.d/init.el --batch
+EMACSFLAGS=
 
 all: www
 
@@ -17,19 +23,25 @@ dern.tar.bz2: external/octaspire_dern
 
 payload: core.tar.bz2 dern.tar.bz2
 
-git-update:
-	git pull origin-gitlab master
-	git submodule update --init --recursive --remote
-	git submodule foreach git pull origin master
+submodules-init:
+	@echo "Initializing submodules..."
+	@git submodule init
+	@git submodule update
+	@echo "Done."
 
-www: git-update payload index.org
+submodules-pull:
+	@echo "Pulling submodules..."
+	@git submodule update --recursive --remote
+	@echo "Done."
+
+www: submodules-pull payload index.org
 	touch feed.xml
 	cp external/octaspire_dern/release/documentation/dern-manual.html .
-	$(EMACS) --load external/octaspire_dern/external/octaspire_dotfiles/emacs/.emacs.d/init.el $(FLAGS) index.org --funcall org-reload --funcall org-html-export-to-html --kill
+	@LANG=eng_US.utf8 $(EMACS) $(EMACSFLAGS) index.org --funcall org-reload --funcall org-html-export-to-html --kill > /dev/null 2>&1
 
 publish: www
 	scp dern-windeps.zip external/bundle.min.css external/bundle.min.js index.html dern-manual.html dern.tar.bz2 dern.tar.bz2.sig dern.tar.bz2.sha512 core.tar.bz2 core.tar.bz2.sig core.tar.bz2.sha512 octaspire-pubkey.asc octaspireO128.png $(OCTASPIRE_IO_SCP_TARGET)
-	scp io-feed.xml "${OCTASPIRE_IO_SCP_TARGET}feed.xml"
+	scp io-feed.xml "${OCTASPIRE_IO_SCP_TARGET}feed.xml"q
 	scp dern-windeps.zip external/bundle.min.css external/bundle.min.js index.html dern-manual.html dern.tar.bz2 dern.tar.bz2.sig dern.tar.bz2.sha512 core.tar.bz2 core.tar.bz2.sig core.tar.bz2.sha512 octaspire-pubkey.asc octaspireO128.png $(OCTASPIRE_COM_SCP_TARGET)
 	scp com-feed.xml "${OCTASPIRE_COM_SCP_TARGET}feed.xml"
 
