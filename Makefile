@@ -41,7 +41,7 @@ www: submodules-pull payload index.org
 
 publish: www
 	scp dern-windeps.zip external/bundle.min.css external/bundle.min.js index.html dern-manual.html dern.tar.bz2 dern.tar.bz2.sig dern.tar.bz2.sha512 core.tar.bz2 core.tar.bz2.sig core.tar.bz2.sha512 octaspire-pubkey.asc octaspireO128.png $(OCTASPIRE_IO_SCP_TARGET)
-	scp io-feed.xml "${OCTASPIRE_IO_SCP_TARGET}feed.xml"q
+	scp io-feed.xml "${OCTASPIRE_IO_SCP_TARGET}feed.xml"
 	scp dern-windeps.zip external/bundle.min.css external/bundle.min.js index.html dern-manual.html dern.tar.bz2 dern.tar.bz2.sig dern.tar.bz2.sha512 core.tar.bz2 core.tar.bz2.sig core.tar.bz2.sha512 octaspire-pubkey.asc octaspireO128.png $(OCTASPIRE_COM_SCP_TARGET)
 	scp com-feed.xml "${OCTASPIRE_COM_SCP_TARGET}feed.xml"
 
