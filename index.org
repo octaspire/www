@@ -2,20 +2,23 @@
 #+AUTHOR: www.octaspire.com
 #+SETUPFILE: org-minimal-theme.setup
 
-[[https://octaspire.io][octaspire.io]] | [[http://octaspire.com][octaspire.com]] | [[https://pgp.mit.edu/pks/lookup?op=get&search=0x9BD2CCD560E9E29C][public key]] | [[file:feed.xml][feed]] | [[https://github.com/octaspire][github]] | [[https://gitlab.com/octaspire][gitlab]]
+| [[https://octaspire.io][io]] | [[http://octaspire.com][com ]] | [[https://pgp.mit.edu/pks/lookup?op=get&search=0x9BD2CCD560E9E29C][key]] | [[file:feed.xml][feed]] | [[https://github.com/octaspire][github]] | [[https://gitlab.com/octaspire][gitlab]] | [[https://bitbucket.org/octaspire][bitbucket]] |
 
 ** CORE
-
-   [[file:core.tar.bz2][release]] | [[file:core.tar.bz2.sig][signature]]| [[file:core.tar.bz2.sha512][checksum]]
-
    A platform independent container, UTF-8 and utility library in standard C99.
 
+   | [[file:core.tar.bz2][release]] | [[file:core.tar.bz2.sig][signature]] | [[file:core.tar.bz2.sha512][checksum]]  |
+   | [[file:core-dev.tar.bz2][devpack]] | [[file:core-dev.tar.bz2.sig][signature]] | [[file:core-dev.tar.bz2.sha512][checksum]]  |
+   | [[https://github.com/octaspire/core][github]]  | [[https://gitlab.com/octaspire/core][gitlab]]    | [[https://bitbucket.org/octaspire/core][bitbucket]] |
+
 ** DERN
-
-   [[file:dern-manual.html][manual]] | [[file:dern.tar.bz2][release]] | [[file:dern.tar.bz2.sig][signature]]| [[file:dern.tar.bz2.sha512][checksum]]
-
    A platform independent programming language in standard C99.
    It is a dialect of Lisp with influences from Scheme, Emacs Lisp and C.
    It runs in Amiga, Plan9, Unix, Windows and almost anything between.
+
+   | [[file:dern-manual.html][manual]] | [[file:dern.tar.bz2][release]] | [[file:dern.tar.bz2.sig][signature]] | [[file:dern.tar.bz2.sha512][checksum]]  |
+   |        | [[file:dern-dev.tar.bz2][devpack]] | [[file:dern-dev.tar.bz2.sig][signature]] | [[file:dern-dev.tar.bz2.sha512][checksum]]  |
+   |        | [[https://github.com/octaspire/dern][github]]  | [[https://gitlab.com/octaspire/dern][gitlab]]    | [[https://bitbucket.org/octaspire/dern][bitbucket]] |
+
 
 
