@@ -62,9 +62,11 @@ submodules-pull:
 	@git submodule update --recursive --remote
 	@echo "Done."
 
-www: submodules-pull payload index.org
+www: submodules-pull payload index.html
 	touch feed.xml
 	cp external/octaspire_dern/release/documentation/dern-manual.html .
+
+index.html: index.org
 	@LANG=eng_US.utf8 $(EMACS) $(EMACSFLAGS) index.org --funcall org-reload --funcall org-html-export-to-html --kill > /dev/null 2>&1
 
 publish: www

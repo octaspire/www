@@ -14,7 +14,7 @@
 ** DERN
    A platform independent programming language in standard C99.
    It is a dialect of Lisp with influences from Scheme, Emacs Lisp and C.
-   It runs in Amiga, Plan9, Unix, Windows and almost anything between.
+   Runs in Amiga, Haiku, Plan9, Unix, Windows and almost anything between.
 
    | [[file:dern-manual.html][manual]] | [[file:dern.tar.bz2][release]] | [[file:dern.tar.bz2.sig][signature]] | [[file:dern.tar.bz2.sha512][checksum]]  |
    |        | [[file:dern-dev.tar.bz2][devpack]] | [[file:dern-dev.tar.bz2.sig][signature]] | [[file:dern-dev.tar.bz2.sha512][checksum]]  |
