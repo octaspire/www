@@ -59,7 +59,9 @@ submodules-init:
 
 submodules-pull:
 	@echo "Pulling submodules..."
-	@git submodule update --recursive --remote
+	@git submodule foreach --recursive git checkout master
+	@git submodule foreach --recursive git pull
+	@git submodule foreach --recursive git submodule update
 	@echo "Done."
 
 www: submodules-pull payload index.html

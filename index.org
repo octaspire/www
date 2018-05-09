@@ -12,6 +12,21 @@
    | [[https://github.com/octaspire/core][github]]  | [[https://gitlab.com/octaspire/core][gitlab]]    | [[https://bitbucket.org/octaspire/core][bitbucket]] |
 
 ** DERN
+
+#+BEGIN_EXPORT html
+<p>
+<a href="https://travis-ci.org/octaspire/dern">
+   <img src="https://travis-ci.org/octaspire/dern.svg?branch=master" alt="Build Status" style="width:90px;height:20px;"/>
+</a>
+<a href="https://codecov.io/gh/octaspire/dern/branch/master">
+   <img src="https://codecov.io/gh/octaspire/dern/coverage.svg?branch=master" alt="Coverage Status" style="width:96px;height:20px;"/>
+</a>
+<a href="https://choosealicense.com/licenses/apache-2.0/" style="text-decoration:none;">
+   <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License" style="width:124px;height:20px;"/>
+</a>
+</p>
+#+END_EXPORT
+
    A platform independent programming language in standard C99.
    It is a dialect of Lisp with influences from Scheme, Emacs Lisp and C.
    Runs in Amiga, Haiku, Plan9, Unix, Windows and almost anything between.
