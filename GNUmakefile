@@ -87,4 +87,20 @@ verify: clean
 	@sha512sum -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
 	@gpg --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
 	@gpg --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
-	@echo "*** VERIFICATION OK ***"
+	@echo "*** .IO   VERIFICATION OK ***"
+	@make clean                                           > /dev/null 2>&1 || (echo "--ERROR-- 'make clean' failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/dern-manual.html        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern manual failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/core-manual.html        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core manual failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/dern.tar.bz2            > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern release failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/dern.sha512             > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern checksums failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/dern.sha512.sig         > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern checksums signature failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/dern-dev.tar.bz2        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern dev release failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/core.tar.bz2            > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core release failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/core.sha512             > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/core.sha512.sig         > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums signature failed: $$?."; exit 1)
+	@curl -O http://octaspire.com/core-dev.tar.bz2        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core dev release failed: $$?."; exit 1)
+	@sha512sum -c dern.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums do not match: $$?."; exit 1)
+	@sha512sum -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
+	@gpg --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
+	@gpg --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
+	@echo "*** .COM  VERIFICATION OK ***"
