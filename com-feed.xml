@@ -36,5 +36,18 @@
             <pubDate>Mon, 23 Apr 2018 16:19:43 +0300</pubDate>
         </item>
 
+        <item>
+            <title>First class Semantic Versioning 2.0.0 values added to Dern</title>
+            <link>http://octaspire.com</link>
+            <description>
+              Octaspire Dern has now initial support for first class
+              SemVer 2.0.0 values built-in in the language.
+              The syntax of numbers has also changed and support
+              for hexadecimal, binary and octal number literals
+              was added. These changes break old code.
+            </description>
+            <pubDate>Mon, 30 Jul 2018 09:16:13 +0300</pubDate>
+        </item>
+
     </channel>
 </rss>

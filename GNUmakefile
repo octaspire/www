@@ -55,7 +55,6 @@ submodules-pull:
 	@echo "Done."
 
 www: submodules-pull payload index.html
-	touch feed.xml
 	cp external/octaspire_dern/release/documentation/dern-manual.html .
 	cp external/octaspire_core/release/documentation/core-manual.html .
 
@@ -68,7 +67,6 @@ publish: www
 	scp com-feed.xml "${OCTASPIRE_COM_SCP_TARGET}feed.xml"
 
 clean:
-	@rm -rf feed.xml
 	@rm -rf core dern
 	@rm -rf dern-manual.html dern.tar.bz2 dern-dev.tar.bz2 dern.sha512 dern.sha512.sig
 	@rm -rf core-manual.html core.tar.bz2 core-dev.tar.bz2 core.sha512 core.sha512.sig
