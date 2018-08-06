@@ -3,13 +3,23 @@ SCPFILES=dern-windeps.zip index.html \
          core-manual.html core.tar.bz2 core-dev.tar.bz2 core.sha512 core.sha512.sig \
          octaspire-pubkey.asc
 
+SHA512SUM=sha512sum
+GPG=gpg
+MAKE=make
+
+ifeq ($(UNAME), OpenBSD)
+    SHA512SUM=gsha512sum
+    GPG=gpg2
+    MAKE=gmake
+endif
+
 all: www
 
 core.tar.bz2: external/octaspire_core
 	cp -r external/octaspire_core/release core
 	tar -cjf core.tar.bz2 core
-	sha512sum core.tar.bz2 >> core.sha512
-	gpg --yes --default-key 9BD2CCD560E9E29C --output core.sha512.sig --armor --detach-sign core.sha512
+	$(SHA512SUM) core.tar.bz2 >> core.sha512
+	$(GPG) --yes --default-key 9BD2CCD560E9E29C --output core.sha512.sig --armor --detach-sign core.sha512
 
 core-dev.tar.bz2: external/octaspire_core
 	cp -r external/octaspire_core core-dev
@@ -17,14 +27,14 @@ core-dev.tar.bz2: external/octaspire_core
 	rm -rf core-dev/dev/external/octaspire_dotfiles/.git
 	rm -rf core-dev/dev/external/octaspire_dotfiles/.gitignore
 	tar -cjf core-dev.tar.bz2 core-dev
-	sha512sum core-dev.tar.bz2 >> core.sha512
-	gpg --yes --default-key 9BD2CCD560E9E29C --output core.sha512.sig --armor --detach-sign core.sha512
+	$(SHA512SUM) core-dev.tar.bz2 >> core.sha512
+	$(GPG) --yes --default-key 9BD2CCD560E9E29C --output core.sha512.sig --armor --detach-sign core.sha512
 
 dern.tar.bz2: external/octaspire_dern
 	cp -r external/octaspire_dern/release dern
 	tar -cjf dern.tar.bz2 dern
-	sha512sum dern.tar.bz2 >> dern.sha512
-	gpg --yes --default-key 9BD2CCD560E9E29C --output dern.sha512.sig --armor --detach-sign dern.sha512
+	$(SHA512SUM) dern.tar.bz2 >> dern.sha512
+	$(GPG) --yes --default-key 9BD2CCD560E9E29C --output dern.sha512.sig --armor --detach-sign dern.sha512
 
 dern-dev.tar.bz2: external/octaspire_dern
 	cp -r external/octaspire_dern dern-dev
@@ -36,8 +46,8 @@ dern-dev.tar.bz2: external/octaspire_dern
 	rm -rf dern-dev/dev/external/octaspire_core/dev/external/octaspire_dotfiles/.git
 	rm -rf dern-dev/dev/external/octaspire_core/dev/external/octaspire_dotfiles/.gitignore
 	tar -cjf dern-dev.tar.bz2 dern-dev
-	sha512sum dern-dev.tar.bz2 >> dern.sha512
-	gpg --yes --default-key 9BD2CCD560E9E29C --output dern.sha512.sig --armor --detach-sign dern.sha512
+	$(SHA512SUM) dern-dev.tar.bz2 >> dern.sha512
+	$(GPG) --yes --default-key 9BD2CCD560E9E29C --output dern.sha512.sig --armor --detach-sign dern.sha512
 
 payload: core.tar.bz2 core-dev.tar.bz2 dern.tar.bz2 dern-dev.tar.bz2
 
@@ -83,12 +93,12 @@ verify: clean
 	@curl -O https://octaspire.io/core.sha512             > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums failed: $$?."; exit 1)
 	@curl -O https://octaspire.io/core.sha512.sig         > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums signature failed: $$?."; exit 1)
 	@curl -O https://octaspire.io/core-dev.tar.bz2        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core dev release failed: $$?."; exit 1)
-	@sha512sum -c dern.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums do not match: $$?."; exit 1)
-	@sha512sum -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
-	@gpg --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
-	@gpg --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
+	@$(SHA512SUM) -c dern.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums do not match: $$?."; exit 1)
+	@$(SHA512SUM) -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
+	@$(GPG) --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
+	@$(GPG) --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
 	@echo "*** .IO   VERIFICATION OK ***"
-	@make clean                                           > /dev/null 2>&1 || (echo "--ERROR-- 'make clean' failed: $$?."; exit 1)
+	@$(MAKE) clean                                           > /dev/null 2>&1 || (echo "--ERROR-- 'make clean' failed: $$?."; exit 1)
 	@curl -O http://octaspire.com/dern-manual.html        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern manual failed: $$?."; exit 1)
 	@curl -O http://octaspire.com/core-manual.html        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core manual failed: $$?."; exit 1)
 	@curl -O http://octaspire.com/dern.tar.bz2            > /dev/null 2>&1 || (echo "--ERROR-- Loading of Dern release failed: $$?."; exit 1)
@@ -99,8 +109,8 @@ verify: clean
 	@curl -O http://octaspire.com/core.sha512             > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums failed: $$?."; exit 1)
 	@curl -O http://octaspire.com/core.sha512.sig         > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core checksums signature failed: $$?."; exit 1)
 	@curl -O http://octaspire.com/core-dev.tar.bz2        > /dev/null 2>&1 || (echo "--ERROR-- Loading of Core dev release failed: $$?."; exit 1)
-	@sha512sum -c dern.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums do not match: $$?."; exit 1)
-	@sha512sum -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
-	@gpg --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
-	@gpg --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
+	@$(SHA512SUM) -c dern.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums do not match: $$?."; exit 1)
+	@$(SHA512SUM) -c core.sha512                             > /dev/null 2>&1 || (echo "--ERROR-- Core checksums do not match: $$?."; exit 1)
+	@$(GPG) --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
+	@$(GPG) --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
 	@echo "*** .COM  VERIFICATION OK ***"
