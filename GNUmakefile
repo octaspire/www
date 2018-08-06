@@ -7,6 +7,8 @@ SHA512SUM=sha512sum
 GPG=gpg
 MAKE=make
 
+UNAME := $(shell uname)
+
 ifeq ($(UNAME), OpenBSD)
     SHA512SUM=gsha512sum
     GPG=gpg2
