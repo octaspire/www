@@ -116,3 +116,8 @@ verify: clean
 	@$(GPG) --verify dern.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Dern checksums signature failed: $$?."; exit 1)
 	@$(GPG) --verify core.sha512.sig                         > /dev/null 2>&1 || (echo "--ERROR-- Core checksums signature failed: $$?."; exit 1)
 	@echo "*** .COM  VERIFICATION OK ***"
+
+push:
+	@git push origin-gitlab
+	@git push origin-bitbucket
+	@git push origin-github
